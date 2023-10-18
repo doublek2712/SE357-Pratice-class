@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor User
+actor Admin
+actor Buyer
+actor Seller
+rectangle "Used electronics marketplace" {
+    User --> (Sign In)
+    User --> (Sign Up)
+    User --> (View product)
+    User --> (Search product)
+    (CRUD post) ..> (Post management): Extend
+    (Approve post) ..> (Post management): Extend
+    (Reject post) ..> (Post management): Extend
+    (Chat with seller) ..> (View product): Extend
+    (Place order) ..> (View product): Extend
+    User --> (CRUD post)
+    Admin --> (Approve post)
+    Admin --> (Reject post)
+    (Approve order) ..> (Order management): Extend
+    (Reject order) ..> (Order management): Extend
+    (Track order status) ..> (Order management): Extend
+    Admin --> (Order management)
+    User --> (Track order status)
+    Buyer --> (Confirm delivery of order)
+    (Rate product) ..> (Confirm delivery of order): Extend
+    Seller --> (Confirm order)
+    (Confirm delivery of order) ..> (Confirm order): Include
+}
+
+Buyer --|> User
+Seller --|> User
+
+@enduml
