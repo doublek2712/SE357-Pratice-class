@@ -24,7 +24,7 @@ rectangle "Used electronics marketplace" {
     Admin --> (Order management)
     User --> (Track order status)
     Buyer --> (Confirm delivery of order)
-    (Rate product) ..> (Confirm delivery of order): Extend
+    (Rate seller) ..> (Confirm delivery of order): Extend
     Seller --> (Confirm order)
     (Confirm delivery of order) ..> (Confirm order): Include
 }

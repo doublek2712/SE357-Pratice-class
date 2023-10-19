@@ -12,6 +12,7 @@ class User {
 class Buyer {
     -purchaseOrders: List<Order>
     +confirmDeliveryOfOrder()
+    +rateSeller()
 }
 
 class Seller {
