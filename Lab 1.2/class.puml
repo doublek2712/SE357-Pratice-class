@@ -21,6 +21,10 @@ class Seller {
 }
 
 class Admin {
+    -username: String
+    -password: String
+    -phoneNumber: String
+    -email: String
     +approvePost()
     +rejectPost()
     +approveOrder()
@@ -112,6 +116,5 @@ Order "1" *-- "1" Payment
 Order "1" *-- "1" Shipment
 User <|-- Buyer
 User <|-- Seller
-User <|-- Admin
 
 @enduml
