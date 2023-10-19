@@ -1,0 +1,116 @@
+@startuml
+class User {
+    -username: String
+    -password: String
+    -phoneNumber: String
+    -email: String
+    -rating: Int
+    +verifySignIn()
+    +createUser()
+}
+
+class Buyer {
+    -purchaseOrders: List<Order>
+    +confirmDeliveryOfOrder()
+}
+
+class Seller {
+    -salesOrders: List<Order>
+    +confirmOrder()
+}
+
+class Admin {
+    +approvePost()
+    +rejectPost()
+    +approveOrder()
+    +rejectOrder()
+}
+
+class Post {
+    -user: User
+    -images: List<String>
+    -price: BigInteger
+    -name: String
+    -description: String
+    -area: String
+    -status: PostStatus
+    +approvePost()
+    +rejectPost()
+}
+
+enum PostStatus {
+    CREATED,
+    APPROVED,
+    REJECTED
+}
+
+class Order {
+    -order: Order
+    -status: OrderStatus
+    -createDate: Date
+    -shipment: Shipment
+    -payment: Payment
+    +approveOrder()
+    +rejectOrder()
+    +cancelOrder()
+    +trackOrder()
+}
+
+enum OrderStatus {
+    CREATED,
+    CONFIRMED,
+    APPROVED,
+    REJECTED,
+    DELIVERING,
+    COMPETED
+}
+
+class Payment {
+    -order: Order
+    -status: PaymentStatus
+    -method: PaymentMethod
+    +updatePaymentStatus()
+}
+
+enum PaymentStatus {
+    PENDING,
+    PROCESSING,
+    COMPETED,
+    DECLINED,
+    CANCELED,
+    REFUNDED
+}
+
+enum PaymentMethod {
+    DIRECT
+    CREDIT_CARD
+    BANKING
+}
+
+class Shipment {
+    -order: Order
+    -status: ShipmentStatus
+    -cost: BigInteger
+    -supplier: String
+    -destination: String
+    -pickupDate: Date
+    -deliveryDate: Date
+    +confirmDelivery()
+}
+
+enum ShipmentStatus {
+    PENDING
+    PICKED_UP
+    IN_TRANSIT
+    DELIVERED
+}
+
+User "1" *-- "*" Post
+Post "1" o-- "1" Order
+Order "1" *-- "1" Payment
+Order "1" *-- "1" Shipment
+User <|-- Buyer
+User <|-- Seller
+User <|-- Admin
+
+@enduml
