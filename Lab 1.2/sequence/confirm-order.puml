@@ -1,0 +1,28 @@
+@startuml
+autonumber
+actor Seller
+boundary "Confirm order page" as Page
+control "Order controller" as OrderClr
+database "Order database" as DB
+control "Delivery controller" as DeliveryClr
+control "Payment controller" as PaymentClr
+Seller -> Page ++: Click confirm button
+Page -> OrderClr ++: Confirm order
+alt successful case
+OrderClr -> DB ++: Update order status
+DB --> OrderClr: Update successfully
+DB--
+OrderClr -> DeliveryClr ++: Create delivery
+DeliveryClr --> OrderClr: Create delivery successfully
+DeliveryClr--
+OrderClr -> PaymentClr ++: Create payment
+PaymentClr --> OrderClr: Create payment successfully
+PaymentClr--
+OrderClr -> OrderClr: Create approve request
+OrderClr --> Page: Confirm order successfully
+Page --> Seller: Notify success
+else failed case
+OrderClr --> Page: Confirm order failed
+Page --> Seller: Notify failed
+end
+@enduml

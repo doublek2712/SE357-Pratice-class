@@ -1,0 +1,19 @@
+@startuml
+autonumber
+actor User
+boundary "Post management page" as Page
+control "Post controller" as PostClr
+database "Post database" as DB
+User -> Page ++: Access post management page
+Page -> PostClr ++: CRUD post
+PostClr -> DB ++: Update data
+alt successful case
+DB --> PostClr: Update data successful
+PostClr --> Page: Success
+Page --> User: Notify CRUD post successfully
+else failed case
+DB --> PostClr: Update data failed
+PostClr --> Page: Failed
+Page --> User: Notify CRUD post failed
+end
+@enduml

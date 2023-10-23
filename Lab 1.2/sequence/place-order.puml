@@ -1,0 +1,23 @@
+@startuml
+autonumber
+actor Customer as Customer
+boundary "Create order page" as Page
+control "Order controller" as Controller
+database "Order database" as DB
+Customer -> Page ++: Fill order information
+Page -> Controller --++: Submit order
+Controller -> Controller: Validate order information
+activate Controller
+Controller -> DB ++: Insert order
+alt successful case
+DB --> Controller: Insert order successful
+deactivate Controller
+Controller -> Controller: Create seller confirmation request
+Controller --> Page: Create order successful
+Page --> Customer: Notify successful
+else invalid order information
+DB --> Controller: Insert order failed
+Controller --> Page: Create order failed
+Page --> Customer: Notify failed
+end
+@enduml

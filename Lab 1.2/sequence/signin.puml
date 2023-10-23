@@ -1,0 +1,18 @@
+@startuml
+autonumber
+actor User
+boundary "Sign in page" as SignIn
+control "User controller" as UserClr
+boundary "Home Page" as Home
+User -> SignIn++: Enter sign in details
+SignIn -> UserClr++: Login user
+UserClr -> UserClr: Validate data
+alt successful case
+UserClr -> SignIn: Success
+SignIn -> User: Notification: Logged in successfully
+else failed case
+SignIn -> User: Username or password is incorrect
+end
+UserClr --
+SignIn -> Home --: Redirect to Home page
+@enduml
