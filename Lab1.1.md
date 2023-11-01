@@ -45,9 +45,60 @@ The tool market is rapidly changing and that tools are becoming increasingly com
 - Usability features such as word processor compatibility
 - SRS documentation format
 #### How can tools enable distributed, global requirements engineering activities? What are the drawbacks in this regard?
+##### Jira:
+- Advantages:
+    + Versatility: Jira is highly versatile, making it suitable for various types of projects, from software development to business operations and support desks.
+    + Customization: It allows extensive customization, making it possible to adapt to different workflows and project types.
+    + Integration: Jira offers a wide range of integrations with other tools, providing flexibility and extending its functionality.
+    + End-to-End Traceability: Jira can be configured to provide end-to-end traceability for software development projects, helping teams track changes and requirements across the development lifecycle.
+    + RESTful API: The RESTful API allows for programmatic interactions with Jira, enabling automation and integration with other systems.
+- Disadvantages:
+    + Complexity: The extensive customization options can also make it complex to set up and maintain for some users.
+    + Cost: Jira can be expensive, especially when using multiple plugins or opting for cloud-based solutions.
+    + Learning Curve: Users might need training to make the most of its features, particularly for advanced configurations.
+##### Aha!:
+- Advantages:
+    + Visual Roadmaps: Aha! offers visually appealing roadmaps, making it easier to align business goals with high-level requirements and releases.
+    + Feature Prioritization: It provides tools for prioritizing backlog items, managing daily work, and planning releases.
+    + Integration: It is integrated with various third-party applications, including Jira, GitHub, and Azure DevOps Server, allowing for seamless collaboration.
+    + Scorecard Feature: The scorecard feature helps objectively rank features against the project's strategy.
+- Disadvantages:
+    + Limited to Roadmaps: Aha! is primarily focused on roadmaps and strategic planning. It might not be as robust for detailed requirements management.
 
+##### Jama Connect:
+
+- Advantages:
+    + Traceability: Jama Connect offers strong upstream and downstream relationship traceability, helping teams understand the impact of changes and coverage across the development lifecycle.
+    + Collaboration: Real-time collaboration features make it easier for team members to work together effectively.
+    + Risk and Hazard Analysis: It provides tools for risk and hazard analysis, which is crucial in safety-critical industries.
+    + Requirements Reuse: The ability to reuse requirements and baseline management can save time and reduce redundancy.
+      •	Disadvantages:
+    + Learning Curve: Jama Connect may have a learning curve for some users due to its extensive features.
+    + Cost: Licensing and maintenance costs can be significant for larger teams and organizations.
+##### IBM DOORS:
+- Advantages:
+    + Strong Requirements Management: IBM DOORS is a robust and widely used requirements management tool.
+    + Object Database: It offers an object-oriented database for managing requirements, providing structured storage and traceability.
+    + Customization: DOORS can be customized using a C-like programming language, offering flexibility.
+    + Standard Templates: Standard templates are available for compliance with industry standards.
+- Disadvantages:
+    + Complexity: DOORS, particularly for beginners, can be complex to set up and use.
+    + Cost: IBM DOORS can be expensive, making it less accessible for smaller organizations.
+    + Resource-Intensive: It may require substantial IT resources for installation and maintenance.
 #### If an environment does not currently engage in solid requirements engineering practices, should tools be introduced?
+Each tool has props and cons. It depends on your needs at the present. There are some key points to keep in mind when making this decision
+-	Assess the current state
+-	Understand the needs
+-	Select the right tool
+-	Plan Implementation
+-	Training and Support
+-	Pilot Project
+-	Integration
+-	Monitoring and Improve
+-	Change Management
+-	Cost-Benefit Analysis
 
+In summary, introducing tools like Jira, Aha!, Jama Connect, or IBM DOORS can be a positive step in improving requirements engineering practices, but it should be done thoughtfully, with a clear understanding of your organization's needs and a well-defined plan for implementation and adoption.
 #### What sort of problems might you find through a traceability matrix that you might not see without one?
 
 #### How is AI being proposed for knowledge acquisition and representation in requirements specifications? 
