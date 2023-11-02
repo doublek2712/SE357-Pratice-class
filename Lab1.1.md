@@ -100,5 +100,8 @@ Each tool has props and cons. It depends on your needs at the present. There are
 
 In summary, introducing tools like Jira, Aha!, Jama Connect, or IBM DOORS can be a positive step in improving requirements engineering practices, but it should be done thoughtfully, with a clear understanding of your organization's needs and a well-defined plan for implementation and adoption.
 #### What sort of problems might you find through a traceability matrix that you might not see without one?
-
+- Missing requirements
+- Unnecessary requirements
+- Incomplete testing
+- Inconsistent testing
 #### How is AI being proposed for knowledge acquisition and representation in requirements specifications? 
