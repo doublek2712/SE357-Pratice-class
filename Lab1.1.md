@@ -105,14 +105,14 @@ In summary, introducing tools like Jira, Aha!, Jama Connect, or IBM DOORS can be
 - Incomplete testing
 - Inconsistent testing
 #### How is AI being proposed for knowledge acquisition and representation in requirements specifications? 
-# Requirements elicitation: 
+##### Requirements elicitation: 
 - One prominently explored task within elicitation is ambiguity detection, which is typically supported via a combination of natural language processing and machine learning (e.g., Chechik 2019 and Ferrari and Esuli 2019). 
 - Another sample AI-elicitation approach is the work from Peclat and Ramos (2018) who examined using semantic analysis for identifying security concerns from collections of unstructured textual documents.
 - The automated analysis of user feedback and emotions (part of affective computing) to capture requirements and feedback directly and automatically from the end is also gaining traction (Groen et al. 2017).
-# Requirements traceability:
+##### Requirements traceability:
 - For example, Hayes et al. (2019) presented the use of metadata, such as readability indexes, as a resource for requirements traceability.
-# Automated classification:
+##### Automated classification:
 - Stanik et al. (2019) presented an application for classifying reviews to better make sense and use of the user opinions shared in social media. They compared traditional machine learning with deep learning when classifying app reviews and users’ tweets into problem reports (potential bugs), inquiries (feature requests), and being irrelevant (noisy feedback). Rashwan (2012) also presented a semantic analysis approach to classifying requirements into functional and nonfunctional requirements.
-# Requirements analysis practice:
+##### Requirements analysis practice:
 - For example, del Sagrado and del Aguila (2018) presented an approach using Bayesian network requisites to predict whether the requirements
 specification documents have to be revised. Requisites provide an estimation of the degree of revision for a given requirements specification (i.e., SRS). nThus, it helps when identifying whether a requirements specification is sufficiently stable and needs no further revision.
