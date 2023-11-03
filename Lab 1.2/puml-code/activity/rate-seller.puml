@@ -1,0 +1,23 @@
+@startuml
+|Buyer| User <<Buyer>> 
+|System|
+|Seller| User <<Seller>> 
+
+|Buyer|
+start
+floating note left
+Assuming the buyer is logged in
+and navigate to order page
+end note
+
+:Select orders whose status is 'received';
+|System|
+:Display rate page;
+|Buyer|
+:Rate the seller on a 5-point scale;
+:Click 'send' button;
+|System|
+:Display thank you message;
+:Rate the seller;
+stop
+@enduml
