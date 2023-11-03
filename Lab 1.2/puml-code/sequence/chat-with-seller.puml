@@ -1,0 +1,33 @@
+@startuml
+autonumber
+actor "User A" as Buyer
+boundary "Seller's personal page" as SPage
+boundary "Post page" as PPage
+boundary "Chat page" as CPage
+control "Chat controller" as Controller
+database "Database" as DB
+actor "User B" as Seller 
+activate Buyer
+alt Access to seller's personal page
+  Buyer -> SPage ++ : Access
+  Buyer -> SPage: Click "Chat with seller" button
+  activate CPage
+  SPage -> CPage -- : Navigate to chat page
+
+else Access to post page 
+  Buyer -> PPage ++: Access
+  Buyer -> PPage: Click "Chat with seller" button
+  PPage -> CPage -- : Navigate to chat page
+end
+
+Buyer -> CPage :Send message
+CPage -> Controller ++: Send message
+Controller -> DB ++:Save message
+DB ->DB ++: Save message
+DB --> Controller --: save successfuly
+deactivate DB
+Controller -> Seller: Send message
+Controller --> CPage --: Send successfully
+CPage --> Buyer--: Sended
+Buyer --
+@enduml
