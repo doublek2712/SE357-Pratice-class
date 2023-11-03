@@ -1,0 +1,32 @@
+@startuml
+|Seller|User <<Seller>>
+|System|
+|Buyer|User <<Buyer>>
+
+|Seller|
+start
+floating note left
+Assuming the seller is logged in
+and navigate to order management page
+end note
+
+:Select a order to view;
+:Click "Confirm" button;
+|System|
+:Display confirm modal;
+|Seller|
+if (confirm) then (yes)
+   |System|
+   :Confirm the order;
+   :Notification "Confirm successfully";
+   :Send a message to notify;
+   |Buyer|
+   :Receive a message;
+   stop
+|Seller|
+else (no) 
+stop
+endif
+
+
+@enduml

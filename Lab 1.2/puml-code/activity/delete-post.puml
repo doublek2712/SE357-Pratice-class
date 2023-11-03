@@ -1,0 +1,18 @@
+@startuml
+|User|
+start
+floating note left
+Assuming the user is logged in 
+and goes to the correct post 
+they want to delete
+end note
+:Request to delete the post;
+|System|
+:Display confirm modal;
+|User|
+:Confirm delete;
+|System|
+:Delete the post;
+:Notification "Delete successfully";
+stop
+@enduml

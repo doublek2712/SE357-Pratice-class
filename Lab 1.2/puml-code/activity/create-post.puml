@@ -1,0 +1,23 @@
+@startuml
+|User|
+start
+floating note left
+Assuming the user is logged in 
+end note
+:Request to create the post;
+|System|
+:Display upload post page;
+|User|
+:Enter post details;
+:Click save;
+|System|
+floating note right
+"Wait" here can mean
+set state of the post
+is "pending"
+end note
+:Save the post and wait
+the administrator confirm;
+:Notification "Upload post successfully";
+stop
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+|Admin|
+start
+floating note left
+Assuming the admin is logged in 
+and navigates to the 
+post management screen
+end note
+
+:Select a post to view;
+|System|
+:Display details of the post;
+|Admin|
+:Click reject button;
+|System|
+:Display confirm modal;
+|Admin| 
+if (click confirm) then (yes)
+|System|
+:Send message to the post owner
+"This post was rejected by admin";
+:Delete the post;
+:Notification "Reject successfully";
+else (no)
+endif
+stop
+@enduml

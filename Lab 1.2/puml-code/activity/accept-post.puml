@@ -1,0 +1,29 @@
+@startuml
+|Admin|
+start
+floating note left
+Assuming the admin is logged in 
+and navigates to the 
+post management screen
+end note
+
+:Select a post to view;
+|System|
+:Display details of the post;
+|Admin|
+:Click accept button;
+|System|
+:Display confirm modal;
+|Admin| 
+if (click confirm) then (yes)
+|System|
+:Accept the post;
+floating note right
+Now the post will be 
+visible to all users
+end note
+:Notification "Accept successfully";
+else (no)
+endif
+stop
+@enduml

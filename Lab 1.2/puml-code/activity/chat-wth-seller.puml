@@ -1,0 +1,25 @@
+@startuml
+|User <<Seller>>|
+|User|
+start
+floating note left
+Assuming the user is logged in
+end note
+:Navigate to the seller's 
+page or their posts;
+:Click "Chat with seller" button;
+|System|
+:Navigate user to chat page;
+|User|
+repeat
+   :Send message;
+   |User <<Seller>>|
+   :Receive message;
+backward:Send message;
+|User|
+backward:Reiceve message;
+|User <<Seller>>|
+repeat while (want to chat?) is (yes)
+-> no;
+stop
+@enduml

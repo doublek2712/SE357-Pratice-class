@@ -1,0 +1,13 @@
+@startuml
+|User|
+start
+:Enter keywords;
+|System|
+:Search post match with keywords;
+if (any post found ?) then (yes) 
+:Display all post found;
+else (no) 
+:Display "There are no match search results";
+endif
+stop
+@enduml

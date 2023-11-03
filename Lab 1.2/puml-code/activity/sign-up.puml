@@ -1,0 +1,14 @@
+@startuml
+|User|
+start
+repeat 
+:Enter sign up details;
+|System|
+:Send these information 
+to User controller;
+backward:Notification "Phone/email is already exist";
+repeat while (validate data (is email valid?, is phone or email exist? ,...)) is (no) not (yes)
+:Notification "Successfull registration";
+:Redirect the user to Home page;
+stop
+@enduml

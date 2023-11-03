@@ -1,0 +1,24 @@
+@startuml
+|User|
+start
+floating note left
+Assuming the user is logged in 
+and goes to the correct post 
+they want to update
+end note
+:Request to update the post;
+|System|
+:Display edit screen;
+|User|
+:Change some information;
+:Click save button;
+|System|
+floating note right
+"Wait" here can mean
+set state of the post
+is "pending"
+end note
+:Save the post and wait 
+the administrator confirm;
+stop
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+|User|
+start
+floating note left
+Assuming the user is logged in 
+and navigates to the post consist of
+the product they want to place
+end note
+
+:Click "Buy now";
+|System|
+:Navigate to Check out screen;
+:Request user to fill out 
+all of order information;
+|User|
+:Enter address, consignee information,
+select payment method;
+:Click check out button;
+|System|
+switch (check payment method) 
+case (pay online)
+   repeat
+      :Request user 
+to make a payment;
+      |User|
+      :Carry out the payment process;
+      note left
+      business process for 
+      this action will be added soon 
+      end note
+      |System|
+      :Verify payment;
+   backward :Notification "Payment failed";
+   repeat while (success) is (no) 
+   -> yes;
+   :Notification "Payment successful";
+case (payment on delivery)
+   :fdfd;
+endswitch
+:Save order;
+stop
+@enduml
