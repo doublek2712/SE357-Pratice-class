@@ -4,7 +4,7 @@ actor User
 boundary "Post management page" as Page
 control "Post controller" as PostClr
 database "Post database" as DB
-User -> Page ++: Access post management page
+User -> Page ++: Request to CRUD post
 Page -> PostClr ++: CRUD post
 PostClr -> DB ++: Update data
 alt successful case
