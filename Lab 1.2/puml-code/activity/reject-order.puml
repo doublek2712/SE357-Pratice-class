@@ -1,0 +1,39 @@
+@startuml
+|Seller|User <<Seller>>
+|System|
+|Buyer|User <<Buyer>>
+
+|Seller|
+start
+floating note left
+Assuming the seller is logged in
+and navigate to order management page
+end note
+
+:Select a order to view;
+:Click "Reject" button;
+|System|
+:Request to write a reason;
+note
+The seller writes the reason
+why they rejected this order
+end note
+|Seller|
+:Write a reason;
+|System|
+:Display confirm modal;
+|Seller|
+if (confirm) then (yes)
+   |System|
+   :Reject the order;
+   :Notification "Reject successfully";
+   :Send a message to notify;
+   |Buyer|
+   :Receive a message;
+   stop
+|Seller|
+else (no) 
+stop
+endif
+
+@enduml
