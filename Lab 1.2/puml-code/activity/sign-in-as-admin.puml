@@ -1,0 +1,15 @@
+@startuml
+|Admin|
+|System| Administration system
+
+|Admin|
+start
+repeat 
+:Enter sign in details;
+|System|
+backward:Notification "Username or password is incorrect";
+repeat while (validate data) is (no) not (yes)
+:Notification "Logged in sucessfully";
+:Redirect the admin to Administration page;
+stop
+@enduml
