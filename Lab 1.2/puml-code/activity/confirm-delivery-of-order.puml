@@ -1,0 +1,38 @@
+@startuml
+|Buyer| User <<Buyer>> 
+|System|
+|Seller| User <<Seller>> 
+
+|Buyer|
+start
+floating note left
+Assuming the buyer is logged in
+and navigate to order page
+end note
+
+:Find the order 
+that has been received;
+:Click 'Received' button;
+|System|
+:Display confirm modal;
+|Buyer|
+if (confirm) then (yes)
+   |System|
+   :Change order status to 'received';
+   :All payments are deemed to have been paid;
+   if (online payment ?) then (yes)
+      :Transfer money;
+      |Seller|
+      :Receive money from sales;
+   |System|
+   else (no) 
+   endif
+   :Send a message to notify;
+   |Seller|
+   :Receive a message;
+   stop
+|Buyer|
+else (no)
+endif
+stop
+@enduml
