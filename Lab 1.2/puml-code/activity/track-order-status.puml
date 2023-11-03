@@ -1,0 +1,20 @@
+@startuml
+|User|
+|System|
+
+|User|
+start
+floating note left
+Assuming the user is logged in
+and navigate to order page
+end note
+
+:Select an order to view status;
+|System|
+:Display order details;
+|User|
+:Click 'View detail status' button;
+|System|
+:Display detail status;
+stop
+@enduml
