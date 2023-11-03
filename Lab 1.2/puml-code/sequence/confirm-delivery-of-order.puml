@@ -1,0 +1,36 @@
+@startuml
+autonumber
+actor "Buyer" as Buyer
+boundary "Order page" as Page
+control "Order controller" as Ctl
+control "Payment controller" as PCtl
+database "Database" as DB
+actor "Seller" as Seller 
+
+Buyer++
+Buyer -> Page ++: Find the order that has been received
+Buyer -> Page : Click 'Received' button
+Page --> Buyer: Display conform modal
+
+alt confirm
+   Buyer -> Page: Confirm
+   Page -> Ctl ++: receive order
+   Ctl -> Ctl ++: change order status to 'received'
+   Ctl --
+   Ctl -> DB ++: update order
+   DB -> DB ++:update order
+   DB --> Ctl --: update successfully
+   DB --
+   alt online payment ?
+      Ctl -> PCtl ++: All payments are deemed to have been paid
+      PCtl -> Seller: Transfer money
+      PCtl --
+   end
+   Ctl --> Page--: successful
+   Page --> Buyer: successful
+   Page -> Seller: send message the buyer has confirmed successful receipt of the goods
+else no
+   Buyer -> Page: No
+   Buyer -> Buyer: End
+end
+@enduml
