@@ -1,0 +1,24 @@
+@startuml
+autonumber
+actor "Buyer" as Buyer
+boundary "Order page" as OPage
+boundary "Rate page" as RPage
+control "User controller" as Ctl
+database "Database" as DB
+
+activate Buyer
+Buyer -> OPage ++: Navigate to tab 'received'
+OPage --> Buyer : Display list of 'received' order
+Buyer -> OPage : Select a order, click 'rate' button
+OPage -> RPage ++: Redirect to rate page
+OPage --
+Buyer -> RPage: Rate the seller on a 5-point scale
+Buyer -> RPage: Click 'send' button
+RPage -> Ctl++: Send rate result
+Ctl -> DB++: Update user rate
+DB -> DB: Update user rate
+DB --> Ctl--:Update successfully
+Ctl --> RPage--: Update successfully
+RPage --> Buyer--: Display thank you message
+Buyer--
+@enduml
