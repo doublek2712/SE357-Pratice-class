@@ -1,23 +1,45 @@
 @startuml
 autonumber
-actor Customer as Customer
-boundary "Create order page" as Page
-control "Order controller" as Controller
-database "Order database" as DB
-Customer -> Page ++: Fill order information
-Page -> Controller --++: Submit order
-Controller -> Controller: Validate order information
-activate Controller
-Controller -> DB ++: Insert order
-alt successful case
-DB --> Controller: Insert order successful
-deactivate Controller
-Controller -> Controller: Create seller confirmation request
-Controller --> Page: Create order successful
-Page --> Customer: Notify successful
-else invalid order information
-DB --> Controller: Insert order failed
-Controller --> Page: Create order failed
-Page --> Customer: Notify failed
+actor "User" as User
+boundary "Posts page" as PostsP
+boundary "Post page" as PostP
+boundary "Check out page" as CheckoutP
+control "Payment controller" as PaymentCtl
+control "Order controller" as OrderCtl
+database "Database" as DB
+
+activate User
+User -> PostsP ++: Select a post
+PostsP -> PostP ++: Redirect user to post page
+PostsP --
+User -> PostP: Click 'Buy now' button
+PostP -> CheckoutP++: Redirect user to check out page
+PostP--
+CheckoutP -> User : Request user to fill out all of order information
+User -> CheckoutP: Enter address, consignee information, select payment method
+User -> CheckoutP : Click 'check out' button
+CheckoutP -> CheckoutP : Check payment method
+
+opt payment online
+   CheckoutP -> User: Request to make payment
+   loop loop while payment still fails, until user don't want to pay anymore
+      User -> CheckoutP: Carry out the payment process
+      CheckoutP -> PaymentCtl ++: Verify payment
+      PaymentCtl -> PaymentCtl: Verify payment
+      alt success
+         PaymentCtl --> CheckoutP: success
+         CheckoutP --> User: Notification "Payment successful"
+      else failed
+         PaymentCtl --> CheckoutP  --: failed
+         CheckoutP --> User : Notification "Payment failed"     
+      end
+   end
 end
+User--
+CheckoutP -> OrderCtl ++: Save order
+CheckoutP--
+OrderCtl -> "New order" **: create
+OrderCtl -> DB ++: Save order
+DB -> DB : Insert new order
+DB --> OrderCtl --: save successfully
 @enduml
