@@ -1,0 +1,22 @@
+@startuml
+autonumber
+actor "User" as User
+boundary "Home page" as Home
+boundary "Create post page" as Page
+control "Post controller" as Ctl
+database "Database" as DB
+
+activate User
+User -> Home ++ : Click 'Create post' button
+Home -> Page ++ : Redirect user to create post page
+User -> Page : Enter post details
+User -> Page : Click save button
+Page -> Ctl ++: Save post
+Ctl -> DB ++: Save post 
+DB -> DB ++: Insert post 
+DB--
+DB --> Ctl-- : Save successfully
+Ctl --> Page --: Save successfully
+Page --> User --: Notification "Upload post successfully"
+User --
+@enduml
