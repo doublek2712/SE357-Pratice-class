@@ -1,0 +1,25 @@
+@startuml
+autonumber
+actor "User" as User
+boundary "User post management page" as Page
+control "Post controller" as Ctl
+database "Database" as DB
+
+activate User
+User -> Page ++ : Find the post want to delete
+User -> Page : Request to delete the post
+Page --> User : Display confirm modal
+alt confirm
+  User -> Page : Click confim button
+  Page -> Ctl ++: Delete the post
+  Ctl -> DB ++: Delete post 
+  DB -> DB ++: Delete post 
+  DB--
+  DB --> Ctl-- : Delete successfully
+  Ctl --> Page --: Delete successfully
+  Page --> User --: Notification "Delete successfully"
+else no
+  User -> Page : Click 'cancel'
+end 
+
+User --
