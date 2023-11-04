@@ -19,23 +19,28 @@ select payment method;
 |System|
 switch (check payment method) 
 case (pay online)
-   repeat
       :Request user 
 to make a payment;
       |User|
-      :Carry out the payment process;
-      note left
-      business process for 
-      this action will be added soon 
-      end note
-      |System|
-      :Verify payment;
-   backward :Notification "Payment failed";
-   repeat while (success) is (no) 
-   -> yes;
-   :Notification "Payment successful";
+      while (Carry out the payment process) is (yes) 
+         note left
+         business process for 
+         this action will be added soon 
+         end note
+         |System|
+         :Verify payment;
+         if (success) then (yes)
+         :Notification "Payment successful";
+         :Save order;
+         stop
+         else (no)
+            :Notification "Payment failed";
+         endif
+      |User|
+      endwhile (no)
+         stop
+|System|
 case (payment on delivery)
-   :fdfd;
 endswitch
 :Save order;
 stop
