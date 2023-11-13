@@ -5,19 +5,19 @@ boundary "Post management page" as Page
 control "Post controller" as Controller
 database "Database" as DB
 
-Admin -> Page : Select an unapproved post
+Admin++
+Admin -> Page++ : Select an unapproved post
 Page --> Admin : Display details of the post
 Admin -> Page : Click 'Accept' button
 Page --> Admin : Display confirm modal
 
-alt confirm
 Admin -> Page : Confirm
-Page -> Controller : Approve the post
+Page -> Controller ++: Approve the post
 Controller -> Controller: Approve the post
-Controller -> DB: Update the post status
-DB --> Controller: Update successful
-Controller --> Page: Approved successfully
-Page --> Admin : Notification "Accept successfully"
-else no
-end
+Controller -> DB++: Update the post status
+DB --> Controller--: Update successful
+Controller --> Page--: Approved successfully
+Page --> Admin-- : Notification "Accept successfully"
+Admin--
+
 @enduml
