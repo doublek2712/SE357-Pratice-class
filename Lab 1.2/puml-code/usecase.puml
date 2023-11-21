@@ -17,6 +17,9 @@ rectangle "Used electronics marketplace" {
     (Reject post) ..> (Post management): Extend
     (Chat with seller) ..> (View product): Extend
     (Place order) ..> (View product): Extend
+    (Choose payment method) --> (Place order): Include
+    (Choose shipping method) --> (Place order): Include
+    (Pay through third-party payment gateway) ..> (Choose payment method): Extend
     User --> (Create post)
     User --> (Update post)
     User --> (Delete post)
