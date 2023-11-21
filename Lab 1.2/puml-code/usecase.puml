@@ -5,6 +5,8 @@ actor User
 actor Admin
 actor Buyer
 actor Seller
+actor "Shipping supplier"
+actor "Third party E-wallet"
 rectangle "Used electronics marketplace" {
     User --> (Sign In)
     User --> (Sign Up)
@@ -19,7 +21,9 @@ rectangle "Used electronics marketplace" {
     (Place order) ..> (View product): Extend
     (Choose payment method) --> (Place order): Include
     (Choose shipping method) --> (Place order): Include
+    "Shipping supplier" --> (Choose shipping method)
     (Pay through third-party payment gateway) ..> (Choose payment method): Extend
+    "Third party E-wallet" -> (Pay through third-party payment gateway)
     User --> (Create post)
     User --> (Update post)
     User --> (Delete post)
