@@ -12,32 +12,43 @@ rectangle "Used electronics marketplace" {
     User --> (Sign Up)
     User --> (View product)
     User --> (Search product)
-    (Create post) ..> (Post management): Extend
-    (Update post) ..> (Post management): Extend
-    (Delete post) ..> (Post management): Extend
-    (Approve post) ..> (Post management): Extend
-    (Reject post) ..> (Post management): Extend
-    (Chat with seller) ..> (View product): Extend
-    (Place order) ..> (View product): Extend
-    (Choose payment method) --> (Place order): Include
-    (Choose shipping method) --> (Place order): Include
-    "Shipping supplier" --> (Choose shipping method)
-    (Pay through third-party payment gateway) ..> (Choose payment method): Extend
-    "Third party E-wallet" -> (Pay through third-party payment gateway)
+    rectangle "Post management" {
+        (Create post) ..> (Post management): Extend
+        (Update post) ..> (Post management): Extend
+        (Delete post) ..> (Post management): Extend
+        (Approve post) ..> (Post management): Extend
+        (Reject post) ..> (Post management): Extend
+    }
+    rectangle "Order management" {
+        (Approve order) ..> (Order management): Extend
+        (Reject order) ..> (Order management): Extend
+        (Track order status) ..> (Order management): Extend
+    }
+    rectangle "Order confirmation" {
+        (Rate seller) ..> (Confirm delivery of order): Extend
+        Seller --> (Confirm order)
+        (Confirm delivery of order) ..> (Confirm order): Include
+    }
+    rectangle "View product" {
+       (Chat with seller) ..> (View product): Extend
+       (Place order) ..> (View product): Extend
+       (Choose payment method) --> (Place order): Include
+       (Choose shipping method) --> (Place order): Include
+       "Shipping supplier" --> (Choose shipping method)
+       (Pay through third-party payment gateway) ..> (Choose payment method): Extend
+       "Third party E-wallet" -> (Pay through third-party payment gateway)
+    }
     User --> (Create post)
     User --> (Update post)
     User --> (Delete post)
     Admin --> (Approve post)
     Admin --> (Reject post)
-    (Approve order) ..> (Order management): Extend
-    (Reject order) ..> (Order management): Extend
-    (Track order status) ..> (Order management): Extend
+    Admin --> (Approve order)
+    Admin --> (Reject order)
     Seller --> (Order management)
     User --> (Track order status)
     Buyer --> (Confirm delivery of order)
-    (Rate seller) ..> (Confirm delivery of order): Extend
-    Seller --> (Confirm order)
-    (Confirm delivery of order) ..> (Confirm order): Include
+
 }
 rectangle "Administration system"{
     Admin --> (Sign in as administrator)
