@@ -1,0 +1,22 @@
+@startuml
+autonumber
+actor "Admin" as Admin
+boundary "Order management page" as Page
+control "Order controller" as OrderCtl
+database "Database" as DB
+control "User controller" as UserCtl
+
+Admin -> Page ++: Click on order confirmation request
+Page --> Admin ++: Display order information
+Admin -> Page: Click 'reject' button
+Page -> OrderCtl ++: Send reject order request
+OrderCtl -> DB ++: Change order status to REJECTED
+DB --> OrderCtl: Update successfully
+DB--
+OrderCtl -> UserCtl ++: Send 'Order rejected' notification
+UserCtl --> OrderCtl: Send notification successfully
+UserCtl --
+OrderCtl -->Page: Reject successfully
+OrderCtl --
+Page --> Admin: Notify reject successfully
+@enduml

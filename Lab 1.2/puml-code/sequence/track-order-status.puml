@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor User
+boundary "Order management page" as Page
+control "Order controller" as Ctl
+database Database as DB
+boundary "Order detail page" as DetailPage
+User -> Page ++: Click 'view detail' on an order
+Page -> Ctl ++: Get order detail request
+Ctl -> DB ++: Query order detail
+DB --> Ctl: Query order detail successfully
+DB--
+Ctl --> Page: Get order detail successfully
+Ctl--
+Page -> DetailPage ++: Redirect to details page
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "User" as User
+boundary "Post detail page" as Page
+control "Post controller" as Ctl
+database "Database" as DB
+User -> Page ++: Click 'edit' button
+Page --> User: Display edit screen
+User -> Page: Edit and click 'save change' button
+Page -> Page: Validate data
+Page -> Ctl ++: Update post request
+Ctl -> DB ++: Save changes to DB
+DB --> Ctl: Update successfully
+DB--
+Ctl --> Page: Update post successfully
+Page --> User: Notify success
+@enduml

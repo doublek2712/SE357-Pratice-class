@@ -1,0 +1,19 @@
+@startuml
+autonumber
+actor User
+boundary "Signup page" as Page
+control "User controller" as Ctl
+database Database as DB
+boundary "Home page" as Home
+
+User -> Page ++: Fill all signup information
+Page -> Page: Validate input
+Page -> Ctl ++: Send signup request
+Ctl -> DB ++: Save user
+DB --> Ctl: Save user successfully
+DB --
+Ctl -> Ctl: Make email verification
+Ctl --> Page: Signup successfully
+Ctl --
+Page -> Home: Redirect to home page
+@enduml

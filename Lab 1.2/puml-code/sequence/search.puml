@@ -1,0 +1,15 @@
+@startuml
+autonumber
+actor "User" as User
+boundary "Product page" as Page
+control "Product controller" as Ctl
+database "Database" as DB
+User -> Page ++: Enter keyword on search bar
+Page -> Ctl ++: Send find product request
+Ctl -> DB ++: Query product
+DB --> Ctl: Return matching products
+DB --
+Ctl --> Page: Return list products
+Ctl --
+Page --> User: Display products
+@enduml

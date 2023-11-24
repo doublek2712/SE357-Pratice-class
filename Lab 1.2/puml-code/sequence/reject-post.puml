@@ -1,0 +1,21 @@
+@startuml
+autonumber
+actor "Admin" as Admin
+boundary "Post management page" as Page
+control "Post controller" as PostCtl
+database "Database" as DB
+control "User controller" as UserCtl
+
+Admin -> Page ++: Click on post confirmation request
+Page --> Admin ++: Display post information
+Admin -> Page: Click 'reject' button
+Page -> PostCtl ++: Send reject post request
+PostCtl -> DB ++: Change post status to REJECTED
+DB --> PostCtl: Update successfully
+DB--
+PostCtl -> UserCtl ++: Send 'Post rejected' notification
+UserCtl --> PostCtl: Send notification successfully
+UserCtl --
+PostCtl -->Page: Reject successfully
+Page --> Admin: Notify reject successfully
+@enduml
