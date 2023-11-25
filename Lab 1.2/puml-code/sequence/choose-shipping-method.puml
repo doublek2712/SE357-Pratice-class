@@ -1,0 +1,17 @@
+@startuml
+autonumber
+actor "Buyer" as Buyer
+boundary "Create order page" as Page
+boundary "List shipping method popup" as Popup
+
+Buyer -> Page ++: Go to create order page
+Page --> Buyer: Display default shipping method
+Buyer -> Page: Click on 'change' button
+Page --> Buyer: Display list shipping popup
+Page--
+Buyer -> Popup ++: Click on 'select' button
+Popup -> Popup: Hide popup
+Popup -> Page ++: Return to create order page
+Popup--
+Page --> Buyer: Display new shipping method
+@enduml

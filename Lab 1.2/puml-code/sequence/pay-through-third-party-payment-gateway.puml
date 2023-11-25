@@ -1,0 +1,26 @@
+@startuml
+autonumber
+actor "Buyer" as Buyer
+boundary "Order page" as Page
+control "Payment controller" as PaymentCtrl
+control "Order controller" as OrderCtrl
+boundary "Payment gateway" as Gateway
+
+Buyer -> Page ++: Click on 'Pay' button
+Page -> PaymentCtrl ++: Create payment request
+Page--
+PaymentCtrl -> OrderCtrl ++: Create new transaction
+OrderCtrl -> OrderCtrl: Save new transaction
+OrderCtrl --> PaymentCtrl: Create new transaction successfully
+OrderCtrl--
+PaymentCtrl -> Gateway ++: Create new payment session
+Gateway --> PaymentCtrl: Return payment url
+PaymentCtrl --> Buyer: Display third party payment page
+PaymentCtrl--
+Buyer -> Gateway: Make payment
+Gateway -> OrderCtrl ++: Update transaction status
+Gateway--
+OrderCtrl --> PaymentCtrl ++: Payment successfully
+PaymentCtrl --> Page ++: Payment successfully
+Page --> Buyer: Notify sucess
+@enduml
