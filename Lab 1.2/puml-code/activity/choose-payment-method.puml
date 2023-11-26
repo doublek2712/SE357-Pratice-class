@@ -1,0 +1,21 @@
+@startuml
+|Buyer| User <<Buyer>>
+|System|
+
+|Buyer|
+start
+:Go to create order page;
+|System|
+:Display default payment method;
+|Buyer|
+:Click on 'change' button;
+|System|
+:Display list payment popup;
+|Buyer|
+:Click on 'select' button;
+|System|
+:Hide popup;
+|System|
+:Display new payment method;
+stop
+@enduml

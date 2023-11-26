@@ -20,7 +20,7 @@ PaymentCtrl--
 Buyer -> Gateway: Make payment
 Gateway -> OrderCtrl ++: Update transaction status
 Gateway--
-OrderCtrl --> PaymentCtrl ++: Payment successfully
-PaymentCtrl --> Page ++: Payment successfully
+OrderCtrl --> PaymentCtrl ++: Payment success
+PaymentCtrl --> Page ++: Payment success
 Page --> Buyer: Notify sucess
 @enduml

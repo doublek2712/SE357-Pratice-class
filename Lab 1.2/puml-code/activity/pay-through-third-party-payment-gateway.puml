@@ -1,0 +1,44 @@
+@startuml
+|Buyer| User <<Buyer>>
+|Order page|
+|Payment controller|
+|Order controller|
+|Payment gateway|
+
+|Buyer|
+start
+:Click on 'pay' button;
+|Order page|
+:Send create payment request;
+|Payment controller|
+:Send create new transaction request;
+|Order controller|
+:Create new transaction;
+:Save new transaction;
+|Payment controller|
+:Process transaction response;
+if (200 OK response) then (yes)
+:Send new payment session request;
+|Payment gateway|
+if (payment information is valid) then (yes)
+:Create new payment session;
+|Order page|
+:Display payment gateway on webview;
+|Buyer|
+:Pay on webview;
+|Order controller|
+if (payment is success) then (yes)
+:Update transaction status to success;
+else (no)
+:Update transaction status to failed;
+endif
+|Payment controller|
+:Notify payment result;
+|Order page|
+:Display payment result;
+else (no)
+endif
+else (no)
+endif
+stop
+@enduml
