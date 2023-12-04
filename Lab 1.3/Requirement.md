@@ -21,3 +21,5 @@
 | 13  | Choose payment method                   | Buyer       |
 | 14  | Choose shipping method                  | Buyer       |
 | 15  | Pay through third-party payment gateway | Buyer       |
+| 16  | Make complain                           | Buyer       |
+| 17  | Product auction                         | Buyer       |

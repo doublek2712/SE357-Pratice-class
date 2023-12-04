@@ -29,15 +29,14 @@ rectangle "Used electronics marketplace" {
         Seller --> (Confirm order)
         (Confirm delivery of order) ..> (Confirm order): Include
     }
-    rectangle "View product" {
-       (Chat with seller) ..> (View product): Extend
-       (Place order) ..> (View product): Extend
-       (Choose payment method) --> (Place order): Include
-       (Choose shipping method) --> (Place order): Include
-       "Shipping supplier" --> (Choose shipping method)
-       (Pay through third-party payment gateway) ..> (Choose payment method): Extend
-       "Third party E-wallet" -> (Pay through third-party payment gateway)
-    }
+
+    (Chat with seller) ..> (View product): Extend
+    (Choose payment method) --> (Place order): Include
+    (Choose shipping method) --> (Place order): Include
+    "Shipping supplier" --> (Choose shipping method)
+    (Pay through third-party payment gateway) ..> (Choose payment method): Extend
+    "Third party E-wallet" -> (Pay through third-party payment gateway)
+    Buyer --> (Place order)
     User --> (Create post)
     User --> (Update post)
     User --> (Delete post)
@@ -48,7 +47,8 @@ rectangle "Used electronics marketplace" {
     Seller --> (Order management)
     User --> (Track order status)
     Buyer --> (Confirm delivery of order)
-
+    Buyer --> (Make complain)
+    Buyer --> (Product auction)
 }
 rectangle "Administration system"{
     Admin --> (Sign in as administrator)
