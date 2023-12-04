@@ -7,7 +7,7 @@ repeat
 :Send these information 
 to User controller;
 backward:Notification "Username or password is incorrect";
-repeat while (validate data) is (no) not (yes)
+repeat while (data is valid) is (no) not (yes)
 :Notification "Logged in sucessfully";
 :Redirect the user to Home page;
 stop

@@ -1,0 +1,21 @@
+@startuml
+|Buyer|
+start
+:Click on 'Make complaint' button;
+
+'|Order details page|
+repeat
+|Order details page|
+:Display complaint form;
+|Buyer|
+:Fill the form;
+|Order details page|
+repeat while (all field is invalid) is (yes)
+-> no;
+:Send complaint to admin queue;
+|ADPage|
+:Receive complaint;
+|Order details page|
+:Notify success;
+stop
+@enduml

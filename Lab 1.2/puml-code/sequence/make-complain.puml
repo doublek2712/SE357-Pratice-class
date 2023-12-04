@@ -1,0 +1,12 @@
+@startuml
+autonumber
+actor Buyer
+boundary "Order details page" as Page
+boundary "Admin page" as ADPage
+Buyer -> Page ++: Click on 'Make complaint' button
+Page --> Buyer: Display complaint form
+Buyer -> Page: Fill the form
+Page -> ADPage ++: Send complaint to admin queue
+ADPage --> Page: Receive complaint
+Page --> Buyer: Notify success
+@enduml
