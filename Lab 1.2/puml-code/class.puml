@@ -34,8 +34,9 @@ class Admin {
 class Post {
     -user: User
     -images: List<String>
-    -price: BigInteger
-    -name: String
+    -product: Product
+    -price: BigDecimal
+    -title: String
     -description: String
     -area: String
     -status: PostStatus
@@ -50,9 +51,10 @@ enum PostStatus {
 }
 
 class Order {
-    -order: Order
+    -post: Post
     -status: OrderStatus
-    -createDate: Date
+    -createdDate: Date
+    -total: BigDecimal
     -shipment: Shipment
     -payment: Payment
     +approveOrder()
@@ -72,6 +74,8 @@ enum OrderStatus {
 
 class Payment {
     -order: Order
+    -createdDate: Date
+    -provider: String
     -status: PaymentStatus
     -method: PaymentMethod
     +updatePaymentStatus()
@@ -110,7 +114,30 @@ enum ShipmentStatus {
     DELIVERED
 }
 
+class Category {
+-name: String
+-products: List<Product>
+}
+
+class Product {
+-name: String
+-description: String
+-brand: String
+-categories: List<Category>
+}
+
+class Rating {
+-buyer: Buyer
+-seller: Seller
+-post: Post
+-rating: Integer
+-comment: String
+}
+
 User "1" *-- "*" Post
+Product "1" *-- "*" Post
+Seller "1" *-- "*" Rating
+Category "*" *-- "*" Product
 Post "1" o-- "1" Order
 Order "1" *-- "1" Payment
 Order "1" *-- "1" Shipment
