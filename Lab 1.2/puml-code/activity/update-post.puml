@@ -6,19 +6,26 @@ Assuming the user is logged in
 and goes to the correct post 
 they want to update
 end note
-:Request to update the post;
+:(1) Request to update the post;
 |System|
-:Display edit screen;
+:(2) Display edit screen;
 |User|
-:Change some information;
-:Click save button;
+:(3) Change some information;
+:(4) Click save button;
 |System|
+if ((5) Input is valid) then (Yes)
+
+'|System|
 floating note right
 "Wait" here can mean
 set state of the post
 is "pending"
 end note
-:Save the post and wait 
+:(6) Save the post and wait
 the administrator confirm;
+:(7) Show success message;
+else (no)
+:(8) Show error message;
+endif
 stop
 @enduml
