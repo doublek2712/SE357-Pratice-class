@@ -2,13 +2,13 @@
 |User|
 start
 repeat 
-:Enter sign in details;
+:(1) Enter sign in details;
 |System|
-:Send these information 
+:(2) Send these information
 to User controller;
-backward:Notification "Username or password is incorrect";
-repeat while (data is valid) is (no) not (yes)
-:Notification "Logged in sucessfully";
-:Redirect the user to Home page;
+backward:(4) Notification "Username or password is incorrect";
+repeat while ((3) data is valid) is (no) not (yes)
+:(5) Notification "Logged in successfully";
+:(6) Redirect the user to Home page;
 stop
 @enduml
