@@ -8,5 +8,6 @@ if ((2) Post exists in the system) then (Yes)
 else (No)
 :(4) Redirect to not found page;
 endif
+
 stop
 @enduml
