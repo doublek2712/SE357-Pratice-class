@@ -1,0 +1,12 @@
+@startuml
+|User|
+start
+:(1) Click on the post thumbnail;
+|System|
+if ((2) Post exists in the system) then (Yes)
+:(3) Redirect to post details page;
+else (No)
+:(4) Redirect to not found page;
+endif
+stop
+@enduml
