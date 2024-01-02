@@ -4,12 +4,16 @@
 
 |Admin|
 start
+floating note left
+Assuming the admin is in
+the administrator sign in page.
+end note
 repeat 
-:Enter sign in details;
+:(1) Enter sign in details;
 |System|
-backward:Notification "Username or password is incorrect";
-repeat while (validate data) is (no) not (yes)
-:Notification "Logged in sucessfully";
-:Redirect the admin to Administration page;
+backward:(2) Notification "Username or password is incorrect";
+repeat while ((3) valid data) is (no) not (yes)
+:(4) Notification "Logged in successfully";
+:(5) Redirect the admin to Administration page;
 stop
 @enduml
