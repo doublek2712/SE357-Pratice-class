@@ -1,44 +1,40 @@
 @startuml
 |Buyer| User <<Buyer>>
-|Order page|
-|Payment controller|
-|Order controller|
-|Payment gateway|
-
 |Buyer|
 start
-:Click on 'pay' button;
-|Order page|
-:Send create payment request;
-|Payment controller|
-:Send create new transaction request;
-|Order controller|
-:Create new transaction;
-:Save new transaction;
-|Payment controller|
-:Process transaction response;
-if (200 OK response) then (yes)
-:Send new payment session request;
+floating note left
+Assuming the user is logged in
+and in place order page
+end note
+:(1) Select 'Pay via payment gateway;
+:(2) Enter required information;
+:(3) Click on 'Pay now' button;
+|System|
+:(4) Send payment request to Payment service;
 |Payment gateway|
-if (payment information is valid) then (yes)
-:Create new payment session;
-|Order page|
-:Display payment gateway on webview;
-|Buyer|
-:Pay on webview;
-|Order controller|
-if (payment is success) then (yes)
-:Update transaction status to success;
+if ((5) Valid payment information) then (yes)
+:(6) Save order information;
+:(7) Return successful response with link to payment gateway;
 else (no)
-:Update transaction status to failed;
+:(8) Return invalid payment information;
 endif
-|Payment controller|
-:Notify payment result;
-|Order page|
-:Display payment result;
+|System|
+if ((9) Valid payment information) then (yes)
+:(10) Save new payment;
+:(11) Redirect to payment gateway;
+|Payment gateway|
+:(12) Payment processing;
+if ((13) Payment successful) then (yes)
+|System|
+:(14) Update payment status;
+:(15) Send payment result email;
+:(16) Notification 'Payment successful';
 else (no)
+:(17) Notification 'Payment failed';
 endif
 else (no)
+|System|
+:(18) Notification "Invalid payment information";
 endif
 stop
 @enduml
