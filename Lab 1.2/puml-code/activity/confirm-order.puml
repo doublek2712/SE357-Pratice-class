@@ -10,18 +10,18 @@ Assuming the seller is logged in
 and navigate to order management page
 end note
 
-:Select a order to view;
-:Click "Confirm" button;
+:(1) Select a order to view;
+:(2) Click "Confirm" button;
 |System|
-:Display confirm modal;
+:(3) Display confirm modal;
 |Seller|
-if (confirm) then (yes)
+if ((6) confirm) then (yes)
    |System|
-   :Confirm the order;
-   :Notification "Confirm successfully";
-   :Send a message to notify;
+   :(7) Confirm the order;
+   :(8) Notification "Confirm order successfully";
+   :(9) Send a message to notify;
    |Buyer|
-   :Receive a message;
+   :(10) Receive a message;
    stop
 |Seller|
 else (no) 

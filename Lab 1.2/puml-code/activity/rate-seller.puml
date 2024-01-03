@@ -1,7 +1,6 @@
 @startuml
 |Buyer| User <<Buyer>> 
 |System|
-|Seller| User <<Seller>> 
 
 |Buyer|
 start
@@ -10,14 +9,18 @@ Assuming the buyer is logged in
 and navigate to order page
 end note
 
-:Select orders whose status is 'received';
+:(1) Select orders whose status is 'received';
 |System|
-:Display rate page;
+:(2) Display rate page;
 |Buyer|
-:Rate the seller on a 5-point scale;
-:Click 'send' button;
+:(4) Rate the seller on a 5-point scale;
+:(3) Click 'Rate' button;
 |System|
-:Display thank you message;
-:Rate the seller;
+if ((4) valid rating) then (yes)
+:(5) Rate the seller;
+:(6) Display thank you message;
+else (no)
+:(7) Notification rate failed;
+endif
 stop
 @enduml
