@@ -31,6 +31,15 @@ class Admin {
     +rejectOrder()
 }
 
+class CustomerService {
+    -username: String
+    -password: String
+    -phoneNumber: String
+    -email: String
+    +handleFeedback()
+    +updateDocument()
+}
+
 class Post {
     -user: User
     -images: List<String>
@@ -134,14 +143,31 @@ class Rating {
 -comment: String
 }
 
+class PushPlan {
+-post: Post
+-rule: Date
+-timeFrame: String
+}
+
+class PushPlanPayment {
+-plan: PushPlan
+-createdDate: Date
+-provider: String
+-status: PaymentStatus
+-method: PaymentMethod
+}
+
 User "1" *-- "*" Post
 Product "1" *-- "*" Post
 Seller "1" *-- "*" Rating
 Category "*" *-- "*" Product
 Post "1" o-- "1" Order
-Order "1" *-- "1" Payment
+Order "1" *-- "*" Payment
 Order "1" *-- "1" Shipment
 User <|-- Buyer
 User <|-- Seller
-
+User -- Admin
+User -- CustomerService
+PushPlan "1" *-- "*" PushPlanPayment
+Post "0" o-- "*" PushPlan
 @enduml
