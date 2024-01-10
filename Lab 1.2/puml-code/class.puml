@@ -1,56 +1,56 @@
 @startuml
 class User {
-    -username: String
-    -password: String
-    -phoneNumber: String
-    -email: String
-    -rating: Int
-    +verifySignIn()
-    +createUser()
+-username: String
+-password: String
+-phoneNumber: String
+-email: String
+-rating: Int
++verifySignIn()
++createUser()
 }
 
 class Buyer {
-    -purchaseOrders: List<Order>
-    +confirmDeliveryOfOrder()
-    +rateSeller()
+-purchaseOrders: List<Order>
++confirmDeliveryOfOrder()
++rateSeller()
 }
 
 class Seller {
-    -salesOrders: List<Order>
-    +confirmOrder()
+-salesOrders: List<Order>
++confirmOrder()
 }
 
 class Admin {
-    -username: String
-    -password: String
-    -phoneNumber: String
-    -email: String
-    +approvePost()
-    +rejectPost()
-    +approveOrder()
-    +rejectOrder()
+-username: String
+-password: String
+-phoneNumber: String
+-email: String
++approvePost()
++rejectPost()
++approveOrder()
++rejectOrder()
 }
 
 class CustomerService {
-    -username: String
-    -password: String
-    -phoneNumber: String
-    -email: String
-    +handleFeedback()
-    +updateDocument()
+-username: String
+-password: String
+-phoneNumber: String
+-email: String
++handleFeedback()
++updateDocument()
 }
 
 class Post {
-    -user: User
-    -images: List<String>
-    -product: Product
-    -price: BigDecimal
-    -title: String
-    -description: String
-    -area: String
-    -status: PostStatus
-    +approvePost()
-    +rejectPost()
+-user: User
+-images: List<String>
+-product: Product
+-price: BigDecimal
+-title: String
+-description: String
+-area: String
+-status: PostStatus
++approvePost()
++rejectPost()
 }
 
 enum PostStatus {
@@ -60,16 +60,17 @@ enum PostStatus {
 }
 
 class Order {
-    -post: Post
-    -status: OrderStatus
-    -createdDate: Date
-    -total: BigDecimal
-    -shipment: Shipment
-    -payment: Payment
-    +approveOrder()
-    +rejectOrder()
-    +cancelOrder()
-    +trackOrder()
+-post: Post
+-status: OrderStatus
+-createdDate: Date
+-total: BigDecimal
+-buyer: Buyer
+-shipment: Shipment
+-payment: Payment
++approveOrder()
++rejectOrder()
++cancelOrder()
++trackOrder()
 }
 
 enum OrderStatus {
@@ -82,12 +83,12 @@ enum OrderStatus {
 }
 
 class Payment {
-    -order: Order
-    -createdDate: Date
-    -provider: String
-    -status: PaymentStatus
-    -method: PaymentMethod
-    +updatePaymentStatus()
+-order: Order
+-createdDate: Date
+-provider: String
+-status: PaymentStatus
+-method: PaymentMethod
++updatePaymentStatus()
 }
 
 enum PaymentStatus {
@@ -106,14 +107,14 @@ enum PaymentMethod {
 }
 
 class Shipment {
-    -order: Order
-    -status: ShipmentStatus
-    -cost: BigInteger
-    -supplier: String
-    -destination: String
-    -pickupDate: Date
-    -deliveryDate: Date
-    +confirmDelivery()
+-order: Order
+-status: ShipmentStatus
+-cost: BigInteger
+-supplier: String
+-destination: String
+-pickupDate: Date
+-deliveryDate: Date
++confirmDelivery()
 }
 
 enum ShipmentStatus {
