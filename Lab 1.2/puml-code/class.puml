@@ -157,6 +157,26 @@ class PushPlanPayment {
 -method: PaymentMethod
 }
 
+enum FeedbackCategory {
+FAULTY_FEATURE
+REQUEST_NEW_FEATURE
+OTHER
+}
+
+enum FeedbackStatus {
+PENDING
+HANDLED
+}
+
+class Feedback {
+-user: User
+-category: FeedbackCategory
+-comment: String
+-proof: String
+-handler: CustomerService
+-reply: String
+}
+
 User "1" *-- "*" Post
 Product "1" *-- "*" Post
 Seller "1" *-- "*" Rating
@@ -170,4 +190,5 @@ User -- Admin
 User -- CustomerService
 PushPlan "1" *-- "*" PushPlanPayment
 Post "0" o-- "*" PushPlan
+CustomerService "1" o-- "*" Feedback
 @enduml
